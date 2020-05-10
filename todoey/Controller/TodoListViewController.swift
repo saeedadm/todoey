@@ -33,62 +33,45 @@ class TodoListViewController: UITableViewController {
         listArray.append(newItem2)
         
         let newItem3 = Item()
-        newItem2.title = "ice"
+        newItem3.title = "ice"
         listArray.append(newItem3)
         
         let newItem4 = Item()
-        newItem2.title = "meat"
+        newItem4.title = "meat"
         listArray.append(newItem4)
         
         let newItem5 = Item()
-        newItem2.title = "banana"
+        newItem5.title = "banana"
         listArray.append(newItem5)
         
         let newItem6 = Item()
-        newItem2.title = "peach"
+        newItem6.title = "peach"
         listArray.append(newItem6)
         
         let newItem7 = Item()
-        newItem2.title = "apple"
+        newItem7.title = "apple"
         listArray.append(newItem7)
         
         let newItem8 = Item()
-        newItem2.title = "door"
+        newItem8.title = "door"
         listArray.append(newItem8)
         
         let newItem9 = Item()
-        newItem2.title = "table"
+        newItem9.title = "table"
         listArray.append(newItem9)
         
         let newItem10 = Item()
-        newItem2.title = "perfume"
+        newItem10.title = "perfume"
         listArray.append(newItem10)
         
         let newItem11 = Item()
-        newItem2.title = "orange"
+        newItem11.title = "orange"
         listArray.append(newItem11)
+    
         
-        
-        
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        //        listArray.append(newItem1)
-        
-        
-        //        if (defaults.stringArray(forKey: "TodoList")) != nil{
-        //            listArray = defaults.array(forKey: "TodoList") as! [String]
-        //        }
+        if let items = defaults.array(forKey: "TodoList") as? [Item]{
+            listArray = items
+        }
     }
     
     //MARK : tableview datasource method
@@ -97,25 +80,14 @@ class TodoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("cell For Row At")
         
-        
+        let item = listArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         cell.backgroundColor = UIColor.gray
         
-        cell.textLabel?.text = listArray[indexPath.row].title
+        cell.textLabel?.text = item.title
         cell.textLabel?.textColor = UIColor.white
         
-        
-        //        let cell1 = UITableViewCell(style: .default, reuseIdentifier: "ToDoItemCell")
-        //        cell1.backgroundColor = UIColor.gray
-        //        cell1.textLabel?.text = listArray[indexPath.row]
-        //        cell1.textLabel?.textColor = UIColor.white
-        if listArray[indexPath.row].done == true{
-            cell.accessoryType = .checkmark
-            defaults.set(true, forKey: "done")
-        }else{
-            cell.accessoryType = .none
-            defaults.set(false, forKey: "done")
-        }
+        cell.accessoryType = item.done ? .checkmark : .none
         
         return cell
     }
