@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class CategoryViewController: UITableViewController {
+class CategoryViewController: SwipeViewController {
     
     let realm = try! Realm()
     var listCategory : Results<Category>?
@@ -20,18 +20,23 @@ class CategoryViewController: UITableViewController {
         super.viewDidLoad()
         print(filePath)
      
+        tableView.rowHeight = 70.0
+        
         loadCategory()
     }
     
     
     // MARK: - Table view data source
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let category = listCategory?[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
-        
         cell.textLabel?.text = category?.name ?? "No Category Added"
-        cell.backgroundColor = UIColor.red
+        cell.backgroundColor = UIColor.orange
         cell.textLabel?.textColor = UIColor.white
+        
+        
+        
         return cell
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,12 +86,30 @@ class CategoryViewController: UITableViewController {
         listCategory = realm.objects(Category.self)
     
 }
+    //MARK - Delete Data From Swipe
+    
+    
+       override func updateModel(at indexPath: IndexPath) {
+            
+        if let categoryForDeletion = listCategory?[indexPath.row] {
+            do {
+                try realm.write{
+                    realm.delete(categoryForDeletion)
+                }
+            } catch  {
+                print("Error For Deletion Category , \(error)")
+            }
+        }
+       
+    }
+    
 }
 extension CategoryViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        searchBar.delegate = self
         listCategory = listCategory?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+        tableView.reloadData()
     }
 //        let request : NSFetchRequest<Categories> = Categories.fetchRequest()
 //        request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)

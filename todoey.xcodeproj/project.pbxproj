@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2251D6FD247539030031CC90 /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251D6FC247539030031CC90 /* SwipeViewController.swift */; };
 		22927F2B246C7FBA00FECF85 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22927F2A246C7FBA00FECF85 /* CategoryViewController.swift */; };
 		22E5D70F24740D1700D931AF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5D70E24740D1700D931AF /* Item.swift */; };
 		22E5D71124740D1E00D931AF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5D71024740D1E00D931AF /* Category.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		0EB3E8818B1878C433C96B62 /* Pods_todoey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todoey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2251D6FC247539030031CC90 /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		22927F2A246C7FBA00FECF85 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		22E5D70E24740D1700D931AF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		22E5D71024740D1E00D931AF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 		2243069424682D0500E804A3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2251D6FC247539030031CC90 /* SwipeViewController.swift */,
 				22927F2A246C7FBA00FECF85 /* CategoryViewController.swift */,
 				22E8585B2466924900BAA7C6 /* TodoListViewController.swift */,
 			);
@@ -252,6 +255,7 @@
 				22E858582466924900BAA7C6 /* AppDelegate.swift in Sources */,
 				22E5D70F24740D1700D931AF /* Item.swift in Sources */,
 				22E8585A2466924900BAA7C6 /* SceneDelegate.swift in Sources */,
+				2251D6FD247539030031CC90 /* SwipeViewController.swift in Sources */,
 				22E5D71124740D1E00D931AF /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
